@@ -6,9 +6,60 @@
 <meta name="theme-color" content="#f8f3e9">
 <title>POSE | ระบบนับลูกค้าและขายสินค้า</title>
 <style>
-:root{color-scheme:light;--bg:#f8f3e9;--card:#fffdf8;--soft:#ece6d8;--ink:#242321;--muted:#77736b;--line:#ded7c9;--accent:#242321;--good:#dce8d8;--bad:#f3dfda;--shadow:0 7px 24px #332b1b0b}
-:root.dark{color-scheme:dark;--bg:#171715;--card:#242320;--soft:#302e29;--ink:#f5f0e7;--muted:#b2aa9c;--line:#454138;--accent:#f0e9dd;--good:#344334;--bad:#503531;--shadow:0 7px 24px #0003}
+:root{color-scheme:light;--bg:#F8F3E6;--card:#ECE6D8;--soft:#F8F3E6;--ink:#151515;--muted:#77736b;--line:transparent;--accent:#151515;--good:#9DB05C;--bad:#F5B8D8;--pink:#F5B8D8;--yellow:#F2D14E;--green:#9DB05C;--blue:#B5C6EC;--rose:#E88DC0;--shadow:none}
+:root.dark{color-scheme:dark;--bg:#1B1917;--card:#302D29;--soft:#3B3731;--ink:#F8F3E6;--muted:#BDB5AA;--line:transparent;--accent:#151515;--good:#9DB05C;--bad:#F5B8D8;--shadow:none}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Noto Sans Thai",sans-serif}.app{max-width:760px;margin:auto;padding:16px 14px calc(35px + env(safe-area-inset-bottom))}.head{display:flex;justify-content:space-between;align-items:center;margin:4px 0 17px}.brand{font-weight:900;letter-spacing:2px;font-size:22px}.sub{font-size:11px;color:var(--muted);letter-spacing:1px}.iconbtn,.btn,.nav button,.step button,.tile{min-height:48px;border:0;border-radius:14px;font:inherit;font-weight:750;cursor:pointer}.iconbtn{width:48px;background:var(--soft);color:var(--ink);font-size:19px}.nav{display:flex;gap:7px;overflow:auto;margin-bottom:14px;padding-bottom:4px}.nav button{padding:0 16px;background:var(--soft);color:var(--muted);white-space:nowrap}.nav button.active{background:var(--accent);color:var(--bg)}.panel{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:17px;margin:12px 0;box-shadow:var(--shadow)}.muted{color:var(--muted)}.hero{text-align:center;padding:23px 16px}.datebar{display:flex;align-items:center;justify-content:center;gap:15px;margin-bottom:8px}.datebar button{border:0;background:var(--soft);color:var(--ink);border-radius:12px;width:42px;height:42px;font-size:21px}.date-label{font-weight:750}.oldnotice{background:var(--bad);padding:10px;border-radius:12px;margin:10px 0;font-size:13px}.total{font-size:clamp(64px,18vw,100px);font-weight:900;line-height:1.1;letter-spacing:-4px;margin:8px 0}.unit{color:var(--muted);font-size:13px}.counter-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}.btn{padding:11px 16px;background:var(--accent);color:var(--bg)}.btn.soft{background:var(--soft);color:var(--ink)}.btn.warn{background:var(--bad);color:var(--ink)}.btn:disabled{opacity:.35;cursor:not-allowed}.big{min-height:76px;font-size:23px;border-radius:19px}.manual{display:flex;gap:8px;margin-top:12px}.manual input{min-width:0;flex:1}.input{width:100%;min-height:48px;padding:10px 13px;border:1px solid var(--line);border-radius:13px;background:var(--bg);color:var(--ink);font:inherit}.manual .btn{min-width:76px}.goalrow{display:flex;justify-content:space-between;gap:8px;align-items:center}.progress{height:13px;border-radius:20px;background:var(--soft);overflow:hidden;margin:12px 0 7px}.progress>div{height:100%;background:#9a8263;border-radius:20px;width:0;transition:width .2s}.sectiontitle{font-size:17px;font-weight:850;margin:0 0 12px}.history-item{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}.history-item:last-child{border:0}.delta{font-weight:850}.positive{color:#548052}.negative{color:#bd695c}.chart{height:150px;display:flex;align-items:end;gap:5px;padding-top:10px}.barcol{height:100%;flex:1;display:flex;flex-direction:column;justify-content:end;align-items:center;gap:5px;min-width:0}.bar{width:min(100%,28px);background:#9a8263;border-radius:7px 7px 2px 2px;min-height:2px}.barcol small{font-size:9px;color:var(--muted)}.peak{font-size:13px;background:var(--soft);border-radius:12px;padding:10px;margin-top:10px}.productgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.tile{background:var(--soft);color:var(--ink);padding:12px;text-align:left;display:flex;flex-direction:column;justify-content:space-between;min-height:86px;border:1px solid var(--line)}.tile:active{transform:scale(.98)}.tile strong{font-size:14px}.tile span{font-size:13px;color:var(--muted);margin-top:6px}.cartline{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 0;border-bottom:1px solid var(--line)}.step{display:flex;align-items:center;gap:8px}.step button{width:38px;min-height:38px;background:var(--soft);color:var(--ink);font-size:19px}.step b{min-width:18px;text-align:center}.totalprice{font-size:25px;font-weight:900}.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.row>*{flex:1}.small{font-size:12px}.toast{position:fixed;bottom:calc(18px + env(safe-area-inset-bottom));left:50%;transform:translate(-50%,20px);background:var(--accent);color:var(--bg);border-radius:13px;padding:11px 17px;opacity:0;pointer-events:none;transition:opacity .18s,transform .18s;z-index:9;max-width:90%;text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}.modal{display:none;position:fixed;inset:0;background:#0008;z-index:10;align-items:end;justify-content:center;padding:12px}.modal.open{display:flex}.modalbox{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:19px;width:min(100%,480px)}.modalbox h3{margin:0 0 8px}.empty{text-align:center;padding:20px;color:var(--muted)}.hide{display:none!important}button:focus-visible,input:focus-visible{outline:3px solid #bd8b42;outline-offset:3px}button:active{filter:brightness(.96)}@media(min-width:600px){.productgrid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+/* POSE · Korean pastel dashboard refresh */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Prompt:wght@300;400;500;600;700;800&display=swap');
+body{font-family:'Nunito','Prompt',system-ui,sans-serif;letter-spacing:.05px}
+.app{max-width:780px;padding:20px 16px calc(38px + env(safe-area-inset-bottom))}
+.head{margin:5px 2px 22px}.brand{font-size:27px;letter-spacing:3px}.sub{font-size:10px;letter-spacing:1.5px}
+.iconbtn,.nav button,.btn,.step button,.datebar button,.tile{border-radius:999px}
+.iconbtn{background:var(--pink);color:#151515}
+.nav{gap:9px;margin-bottom:18px}.nav button{padding:0 19px;background:var(--card);color:var(--muted);font-size:13px}.nav button.active{background:#151515;color:#F8F3E6}
+.panel{position:relative;isolation:isolate;overflow:hidden;background:var(--card);border:0;border-radius:24px;padding:20px;margin:14px 0;box-shadow:none}
+.panel>*{position:relative;z-index:1}
+.panel:after{content:"✳";position:absolute;z-index:0;right:14px;top:5px;font-size:54px;line-height:1;color:#E88DC0;opacity:.19;transform:rotate(12deg);pointer-events:none}
+.panel:nth-of-type(2):after{content:"♡";color:#B5C6EC;right:15px;top:4px}
+.panel:nth-of-type(3):after{content:"✦";color:#F2D14E}
+.panel:nth-of-type(4):after{content:"＋";color:#9DB05C}
+.hero{background:#ECE6D8;text-align:center;padding:25px 18px 22px}
+.datebar button{background:#151515;color:#F8F3E6;width:44px;height:44px}
+.date-label{font-size:15px}.total{font-size:clamp(72px,19vw,108px);font-weight:900;letter-spacing:-4px;color:var(--ink)}
+.unit{font-size:12px;color:var(--muted)}
+.counter-actions{gap:12px}.btn{min-height:50px;padding:12px 19px;background:#151515;color:#F8F3E6;font-weight:800}
+.btn.soft{background:var(--blue);color:#151515}.btn.warn{background:var(--pink);color:#151515}
+.btn.big{min-height:76px;border-radius:22px;font-size:24px}
+#plusOne{background:#151515;color:#F8F3E6}#minusOne{background:var(--yellow);color:#151515}
+.input{border:0;border-radius:16px;background:var(--bg);min-height:50px;color:var(--ink)}
+.manual .btn{min-width:70px}
+.progress{background:#F8F3E6;height:14px}.progress>div{background:#9DB05C}
+.sectiontitle{font-size:17px;font-weight:900;letter-spacing:.1px}
+.history-item{border-bottom:1px solid #15151512}.delta.positive{color:#657A32}.delta.negative{color:#C45D8F}
+.bar{background:#B5C6EC}.peak{background:#F5B8D8;color:#151515;border-radius:16px}
+.productgrid{gap:11px}
+.tile{border:0;min-height:112px;padding:15px 16px;background:#F5B8D8;color:#151515;position:relative;overflow:hidden;border-radius:22px;text-align:left}
+.tile:nth-child(4n+2){background:#F2D14E}.tile:nth-child(4n+3){background:#B5C6EC}.tile:nth-child(4n+4){background:#9DB05C}
+.tile strong{font-size:14px;font-weight:900;line-height:1.4}.tile span{color:#39352F;font-weight:700;font-size:13px}
+.tile:after{content:"✦";position:absolute;right:12px;top:7px;font-size:27px;opacity:.18}
+.tile:active{transform:scale(.97)}
+.cartline{border-bottom:1px solid #15151512}.step{gap:7px}.step button{background:#151515;color:#F8F3E6}
+.totalprice{font-size:27px}
+.toast{border-radius:999px;background:#151515;color:#F8F3E6;padding:12px 20px}
+.modalbox{border:0;border-radius:26px}.oldnotice{background:#F5B8D8;color:#151515;border-radius:16px}
+.empty{font-size:13px}
+:root.dark .hero{background:#3B3731}
+:root.dark .panel{background:#302D29}
+:root.dark .input{background:#24211E}
+:root.dark .nav button{background:#302D29;color:#D5CFC5}
+:root.dark .nav button.active{background:#151515;color:#F8F3E6}
+:root.dark .datebar button,:root.dark .step button{background:#151515;color:#F8F3E6}
+:root.dark .peak{background:#F5B8D8;color:#151515}
+:root.dark .progress{background:#454038}
+:root.dark .tile,:root.dark .tile:nth-child(4n+2),:root.dark .tile:nth-child(4n+3),:root.dark .tile:nth-child(4n+4){color:#151515}
+@media(min-width:600px){.app{padding-left:20px;padding-right:20px}.panel{padding:23px}}
+
 </style>
 </head>
 <body>
@@ -81,7 +132,7 @@ function manual(delta){const n=Math.floor(Number($('manualQty').value));if(!Numb
 $('manualAdd').onclick=()=>manual(1);$('manualSub').onclick=()=>manual(-1);
 $('undoBtn').onclick=()=>{if(selectedDay!==today())return;const d=dayData(today()),last=d.logs.shift();if(!last){toast('ไม่มีรายการให้ยกเลิก');return}d.count=Math.max(0,d.count-last.delta);d.logs.forEach(x=>{if(x.stamp>last.stamp)x.after=Math.max(0,x.after-last.delta)});save();render();toast('ยกเลิกรายการล่าสุดแล้ว')};
 $('resetBtn').onclick=()=>ask('รีเซ็ตยอดวันนี้','ต้องการล้างยอดและประวัติการนับของวันนี้ใช่หรือไม่?',()=>{db.days[today()]={count:0,logs:[]};selectedDay=today();save();render();toast('รีเซ็ตยอดวันนี้แล้ว')});
-function renderPOS(){$('productGrid').innerHTML=db.products.map(p=>'<button class="tile" data-product="'+esc(p.id)+'"><strong>'+esc(p.name)+'</strong><span>'+money(p.price)+' · แตะเพื่อ +1</span>'+(cart[p.id]?'<b class="positive" style="margin-top:7px">ในบิล '+cart[p.id]+' ชิ้น</b>':'')+'</button>').join('');$('productGrid').querySelectorAll('[data-product]').forEach(b=>b.onclick=()=>{const p=db.products.find(x=>x.id===b.dataset.product);if(p){cart[p.id]=(cart[p.id]||0)+1;renderPOS();toast('เพิ่ม '+p.name+' อีก 1 ชิ้น')}});renderCart()}
+function renderPOS(){$('productGrid').innerHTML=db.products.map(p=>'<button class="tile" data-product="'+esc(p.id)+'"><strong>'+esc(p.name)+'</strong><span>'+money(p.price)+'</span>'+(cart[p.id]?'<b class="positive" style="margin-top:7px">ในบิล '+cart[p.id]+' ชิ้น</b>':'')+'</button>').join('');$('productGrid').querySelectorAll('[data-product]').forEach(b=>b.onclick=()=>{const p=db.products.find(x=>x.id===b.dataset.product);if(p){cart[p.id]=(cart[p.id]||0)+1;renderPOS();toast('เพิ่ม '+p.name+' อีก 1 ชิ้น')}});renderCart()}
 function renderCart(){const entries=Object.entries(cart).filter(([,q])=>q>0);$('cartList').innerHTML=entries.length?entries.map(([id,q])=>{const p=db.products.find(x=>x.id===id);return p?'<div class="cartline"><div style="min-width:0;flex:1"><strong>'+esc(p.name)+'</strong><div class="muted small">'+money(p.price)+' / ชิ้น</div></div><div class="step"><button data-minus="'+id+'">−</button><b>'+q+'</b><button data-plus="'+id+'">+</button></div><strong>'+money(p.price*q)+'</strong></div>':''}).join(''):'<div class="empty">ยังไม่ได้เลือกสินค้า</div>';let total=entries.reduce((s,[id,q])=>s+(db.products.find(p=>p.id===id)?.price||0)*q,0);$('cartTotal').textContent=money(total);$('cartList').querySelectorAll('[data-minus]').forEach(b=>b.onclick=()=>{cart[b.dataset.minus]--;if(cart[b.dataset.minus]<=0)delete cart[b.dataset.minus];renderCart()});$('cartList').querySelectorAll('[data-plus]').forEach(b=>b.onclick=()=>{cart[b.dataset.plus]++;renderCart()})}
 $('clearCart').onclick=()=>{cart={};renderCart()};
 $('checkout').onclick=()=>{const items=Object.entries(cart).map(([id,qty])=>{const p=db.products.find(x=>x.id===id);return p?{name:p.name,price:Number(p.price),qty}:null}).filter(Boolean);if(!items.length){toast('เลือกสินค้าในบิลก่อน');return}const total=items.reduce((s,x)=>s+x.price*x.qty,0);db.sales.unshift({id:uid(),date:today(),time:timeNow(),items,total});cart={};save();render();toast('บันทึกยอดขาย '+money(total)+' แล้ว')};
