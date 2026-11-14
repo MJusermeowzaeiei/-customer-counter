@@ -20,10 +20,10 @@ body{font-family:'Nunito','Prompt',system-ui,sans-serif;letter-spacing:.05px}
 .nav{gap:9px;margin-bottom:18px}.nav button{padding:0 19px;background:var(--card);color:var(--muted);font-size:13px}.nav button.active{background:#151515;color:#F8F3E6}
 .panel{position:relative;isolation:isolate;overflow:hidden;background:var(--card);border:0;border-radius:24px;padding:20px;margin:14px 0;box-shadow:none}
 .panel>*{position:relative;z-index:1}
-.panel:after{content:"✳";position:absolute;z-index:0;right:14px;top:5px;font-size:54px;line-height:1;color:#E88DC0;opacity:.19;transform:rotate(12deg);pointer-events:none}
-.panel:nth-of-type(2):after{content:"♡";color:#B5C6EC;right:15px;top:4px}
-.panel:nth-of-type(3):after{content:"✦";color:#F2D14E}
-.panel:nth-of-type(4):after{content:"＋";color:#9DB05C}
+.panel:after{content:"";position:absolute;z-index:0;right:18px;top:14px;width:32px;height:32px;border-radius:10px;background:#E8C9D8;opacity:.48;transform:rotate(24deg);pointer-events:none}
+.panel:nth-of-type(2):after{width:26px;height:26px;border-radius:50%;background:#C9D5EA;right:20px;top:15px}
+.panel:nth-of-type(3):after{width:30px;height:30px;border-radius:5px;background:#E9DCA8;transform:rotate(45deg)}
+.panel:nth-of-type(4):after{width:34px;height:20px;border-radius:5px;background:#C9D4B2;transform:rotate(-24deg)}
 .hero{background:#ECE6D8;text-align:center;padding:25px 18px 22px}
 .datebar button{background:#151515;color:#F8F3E6;width:44px;height:44px}
 .date-label{font-size:15px}.total{font-size:clamp(72px,19vw,108px);font-weight:900;letter-spacing:-4px;color:var(--ink)}
@@ -42,7 +42,7 @@ body{font-family:'Nunito','Prompt',system-ui,sans-serif;letter-spacing:.05px}
 .tile{border:0;min-height:112px;padding:15px 16px;background:#F5B8D8;color:#151515;position:relative;overflow:hidden;border-radius:22px;text-align:left}
 .tile:nth-child(4n+2){background:#F2D14E}.tile:nth-child(4n+3){background:#B5C6EC}.tile:nth-child(4n+4){background:#9DB05C}
 .tile strong{font-size:14px;font-weight:900;line-height:1.4}.tile span{color:#39352F;font-weight:700;font-size:13px}
-.tile:after{content:"✦";position:absolute;right:12px;top:7px;font-size:27px;opacity:.18}
+.tile:after{content:"";position:absolute;right:14px;top:13px;width:17px;height:17px;border:2px solid currentColor;border-radius:5px;opacity:.16;transform:rotate(24deg)}
 .tile:active{transform:scale(.97)}
 .cartline{border-bottom:1px solid #15151512}.step{gap:7px}.step button{background:#151515;color:#F8F3E6}
 .totalprice{font-size:27px}
@@ -59,6 +59,35 @@ body{font-family:'Nunito','Prompt',system-ui,sans-serif;letter-spacing:.05px}
 :root.dark .progress{background:#454038}
 :root.dark .tile,:root.dark .tile:nth-child(4n+2),:root.dark .tile:nth-child(4n+3),:root.dark .tile:nth-child(4n+4){color:#151515}
 @media(min-width:600px){.app{padding-left:20px;padding-right:20px}.panel{padding:23px}}
+
+
+/* Softer Korean pastel product selection */
+.variant-group{background:#F7F1E9;border-radius:22px;padding:15px;margin-top:12px}
+.variant-heading{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:12px;font-size:14px;font-weight:800;color:#4C443D}
+.variant-heading strong{font-size:12px;background:#E9DCCB;color:#5B5148;border-radius:999px;padding:7px 11px;white-space:nowrap}
+.variant-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.variantbtn{min-width:0;min-height:104px;border:0;border-radius:18px;background:#F1DFE6;color:#4B3D42;padding:12px 6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;font:inherit;cursor:pointer}
+.variantbtn:nth-child(2){background:#E5EAF3;color:#3E485B}
+.variantbtn:nth-child(3){background:#E8EBD9;color:#48503C}
+.variantbtn strong{font-size:12px;line-height:1.35;text-align:center}
+.variantbtn small,.kittybtn small{font-size:11px;opacity:.76}
+.shape{display:block;width:28px;height:28px;border:2px solid currentColor;opacity:.62;margin-bottom:3px}
+.circle-shape{border-radius:50%}
+.oval-shape{width:36px;height:23px;border-radius:50%}
+.square-shape{border-radius:5px}
+.kittybtn{width:100%;min-height:66px;margin-top:10px;padding:10px 14px;border:0;border-radius:18px;background:#EDE4D9;color:#51463D;display:flex;align-items:center;gap:12px;text-align:left;font:inherit;cursor:pointer}
+.kittybtn>span:nth-child(2){display:flex;flex-direction:column;gap:2px;flex:1}
+.kittybtn strong{font-size:14px}.kitty-mark{width:38px;height:38px;border-radius:13px;background:#F5DCE5;display:grid;place-items:center;font-weight:900;font-size:16px;color:#9C6B7E}
+.addmark{width:30px;height:30px;border-radius:50%;background:#D9E1CE;display:grid;place-items:center;font-size:20px}
+.variantbtn:active,.kittybtn:active{transform:scale(.98)}
+:root.dark .variant-group{background:#3B3731}
+:root.dark .variant-heading{color:#F1E9DF}
+:root.dark .variant-heading strong{background:#514A40;color:#F1E9DF}
+:root.dark .variantbtn{color:#4B3D42}
+:root.dark .variantbtn:nth-child(2){color:#3E485B}
+:root.dark .variantbtn:nth-child(3){color:#48503C}
+:root.dark .kittybtn{background:#EDE4D9;color:#51463D}
+@media(max-width:360px){.variant-grid{gap:6px}.variantbtn{padding:10px 3px}.variantbtn strong{font-size:11px}}
 
 </style>
 </head>
@@ -81,7 +110,8 @@ body{font-family:'Nunito','Prompt',system-ui,sans-serif;letter-spacing:.05px}
 <div class="panel"><div class="goalrow"><h2 class="sectiontitle" style="margin:0">ประวัติการนับวันนี้</h2><span class="muted small" id="logCount">0 รายการ</span></div><div id="todayLogs"></div></div>
 </section>
 <section id="page-pos" class="hide">
-<div class="panel"><h2 class="sectiontitle">แตะสินค้าเพื่อเพิ่มลงบิล</h2><p class="muted small">แตะการ์ดสินค้า 1 ครั้ง ระบบจะเพิ่มจำนวน 1 ชิ้นและบวกราคาให้อัตโนมัติ</p><div class="productgrid" id="productGrid"></div></div>
+<div class="panel"><h2 class="sectiontitle">สินค้าเพิ่มเติม</h2><p class="muted small">เลือกแบบพวงกุญแจที่ต้องการ หรือเลือกคิตตี้เพื่อเพิ่มลงบิล</p><div class="variant-group"><div class="variant-heading">พวงกุญแจ <strong>70 บาท / ชิ้น</strong></div><div class="variant-grid"><button class="variantbtn" data-special="keychain-circle"><span class="shape circle-shape"></span><strong>วงกลม</strong><small>70 บาท</small></button><button class="variantbtn" data-special="keychain-oval"><span class="shape oval-shape"></span><strong>วงรี</strong><small>70 บาท</small></button><button class="variantbtn" data-special="keychain-square"><span class="shape square-shape"></span><strong>สี่เหลี่ยมจัตุรัส</strong><small>70 บาท</small></button></div><button class="kittybtn" data-special="kitty"><span class="kitty-mark">K</span><span><strong>คิตตี้</strong><small>50 บาท / ชิ้น</small></span><span class="addmark">+</span></button></div></div>
+<div class="panel"><h2 class="sectiontitle">สินค้าในร้าน</h2><p class="muted small">เลือกสินค้าเพื่อเพิ่มลงบิล ระบบคำนวณราคาให้อัตโนมัติ</p><div class="productgrid" id="productGrid"></div></div>
 <div class="panel"><div class="goalrow"><h2 class="sectiontitle" style="margin:0">รายการในบิล</h2><button class="btn soft small" id="clearCart">ล้างบิล</button></div><div id="cartList"><div class="empty">ยังไม่ได้เลือกสินค้า</div></div><div class="goalrow" style="margin-top:13px"><strong>ยอดรวม</strong><div class="totalprice" id="cartTotal">฿0.00</div></div><button class="btn" style="width:100%;margin-top:12px" id="checkout">บันทึกการขาย</button></div>
 <div class="panel"><h2 class="sectiontitle">เพิ่มสินค้าใหม่</h2><div class="row"><input class="input" id="newProductName" placeholder="ชื่อสินค้า"><input class="input" id="newProductPrice" type="number" min="0" step=".01" placeholder="ราคา"></div><button class="btn soft" style="width:100%;margin-top:9px" id="addProduct">เพิ่มสินค้าเข้าร้าน</button></div>
 </section>
@@ -102,6 +132,7 @@ body{font-family:'Nunito','Prompt',system-ui,sans-serif;letter-spacing:.05px}
 'use strict';
 const KEY='pose_counter_pos_v2';
 const PRESETS=[['กรอบรูป - ใหญ่',250],['กรอบรูป - เล็ก',180],['กรอบรูป - กรอกราคาเอง',0],['ผ้า - ใหญ่',30],['ผ้า - เล็ก',20],['ผ้า - เศษผ้า',5],['อุปกรณ์ตกแต่ง - ลูกไม้',20],['อุปกรณ์ตกแต่ง - ริบบิ้น',10],['อุปกรณ์ตกแต่ง - สติกเกอร์ดาว (2 ชิ้น)',5],['อุปกรณ์ตกแต่ง - สติกเกอร์หัวใจ (2 ชิ้น)',5],['อุปกรณ์ตกแต่ง - สติกเกอร์เพชร (3 ชิ้น)',5],['อุปกรณ์ตกแต่ง - กุหลาบริบบิ้น',5],['อุปกรณ์ตกแต่ง - ดอกเดซี่',5]];
+const SPECIAL_PRODUCTS=[{id:'keychain-circle',name:'พวงกุญแจ - วงกลม',price:70},{id:'keychain-oval',name:'พวงกุญแจ - วงรี',price:70},{id:'keychain-square',name:'พวงกุญแจ - สี่เหลี่ยมจัตุรัส',price:70},{id:'kitty',name:'คิตตี้',price:50}];
 let db={days:{},products:[],sales:[],goal:0,theme:'auto'};
 let selectedDay=iso(new Date()),cart={},pendingAction=null;
 const $=id=>document.getElementById(id);
@@ -114,7 +145,7 @@ function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&l
 function dayData(day){if(!db.days[day])db.days[day]={count:0,logs:[]};return db.days[day]}
 function timeNow(){return new Date().toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false})}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(db))}catch(e){toast('บันทึกไม่ได้ พื้นที่จัดเก็บอาจเต็ม')}}
-function load(){try{const raw=localStorage.getItem(KEY);if(raw){const x=JSON.parse(raw);if(x&&typeof x==='object')db={...db,...x,days:x.days&&typeof x.days==='object'?x.days:{},products:Array.isArray(x.products)?x.products:[],sales:Array.isArray(x.sales)?x.sales:[]}}else{const legacy=localStorage.getItem('customerCounterApp_v1');if(legacy){const x=JSON.parse(legacy);if(x&&Array.isArray(x.visits)){x.visits.forEach(v=>{const stamp=new Date(v.dateTime||v.createdAt||Date.now());const day=v.businessDate||iso(stamp);if(!db.days[day])db.days[day]={count:0,logs:[]};const d=db.days[day];d.count++;d.logs.push({id:v.id||uid(),time:stamp.toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}),stamp:stamp.getTime(),delta:1,after:d.count})});Object.keys(db.days).forEach(day=>{db.days[day].logs.sort((a,b)=>a.stamp-b.stamp).forEach((l,i)=>l.after=i+1);db.days[day].logs.reverse()});if(Array.isArray(x.products)&&x.products.length)db.products=x.products.map(p=>({id:p.id||uid(),name:p.name,price:Number(p.price)||0}));if(Array.isArray(x.visits))db.sales=x.visits.filter(v=>v.purchased&&Number(v.total)>0).map(v=>({id:v.id||uid(),date:v.businessDate||iso(new Date(v.dateTime||v.createdAt)),time:new Date(v.dateTime||v.createdAt).toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}),items:v.items||[],total:Number(v.total)||0}));toast('นำเข้าประวัติเดิมแล้ว')}}}}catch(e){toast('อ่านข้อมูลเดิมไม่สำเร็จ')}if(!db.products.length)db.products=PRESETS.map(([name,price])=>({id:uid(),name,price}));save()}
+function load(){try{const raw=localStorage.getItem(KEY);if(raw){const x=JSON.parse(raw);if(x&&typeof x==='object')db={...db,...x,days:x.days&&typeof x.days==='object'?x.days:{},products:Array.isArray(x.products)?x.products:[],sales:Array.isArray(x.sales)?x.sales:[]}}else{const legacy=localStorage.getItem('customerCounterApp_v1');if(legacy){const x=JSON.parse(legacy);if(x&&Array.isArray(x.visits)){x.visits.forEach(v=>{const stamp=new Date(v.dateTime||v.createdAt||Date.now());const day=v.businessDate||iso(stamp);if(!db.days[day])db.days[day]={count:0,logs:[]};const d=db.days[day];d.count++;d.logs.push({id:v.id||uid(),time:stamp.toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}),stamp:stamp.getTime(),delta:1,after:d.count})});Object.keys(db.days).forEach(day=>{db.days[day].logs.sort((a,b)=>a.stamp-b.stamp).forEach((l,i)=>l.after=i+1);db.days[day].logs.reverse()});if(Array.isArray(x.products)&&x.products.length)db.products=x.products.map(p=>({id:p.id||uid(),name:p.name,price:Number(p.price)||0}));if(Array.isArray(x.visits))db.sales=x.visits.filter(v=>v.purchased&&Number(v.total)>0).map(v=>({id:v.id||uid(),date:v.businessDate||iso(new Date(v.dateTime||v.createdAt)),time:new Date(v.dateTime||v.createdAt).toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}),items:v.items||[],total:Number(v.total)||0}));toast('นำเข้าประวัติเดิมแล้ว')}}}}catch(e){toast('อ่านข้อมูลเดิมไม่สำเร็จ')}if(!db.products.length)db.products=PRESETS.map(([name,price])=>({id:uid(),name,price}));SPECIAL_PRODUCTS.forEach(sp=>{if(!db.products.some(p=>p.id===sp.id))db.products.push({...sp})});save()}
 let toastTimer;function toast(s){$('toast').textContent=s;$('toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').classList.remove('show'),2100)}
 function ask(title,msg,fn){$('confirmTitle').textContent=title;$('confirmMessage').textContent=msg;pendingAction=fn;$('confirmModal').classList.add('open')}
 $('confirmNo').onclick=()=>{$('confirmModal').classList.remove('open');pendingAction=null};
@@ -132,7 +163,9 @@ function manual(delta){const n=Math.floor(Number($('manualQty').value));if(!Numb
 $('manualAdd').onclick=()=>manual(1);$('manualSub').onclick=()=>manual(-1);
 $('undoBtn').onclick=()=>{if(selectedDay!==today())return;const d=dayData(today()),last=d.logs.shift();if(!last){toast('ไม่มีรายการให้ยกเลิก');return}d.count=Math.max(0,d.count-last.delta);d.logs.forEach(x=>{if(x.stamp>last.stamp)x.after=Math.max(0,x.after-last.delta)});save();render();toast('ยกเลิกรายการล่าสุดแล้ว')};
 $('resetBtn').onclick=()=>ask('รีเซ็ตยอดวันนี้','ต้องการล้างยอดและประวัติการนับของวันนี้ใช่หรือไม่?',()=>{db.days[today()]={count:0,logs:[]};selectedDay=today();save();render();toast('รีเซ็ตยอดวันนี้แล้ว')});
-function renderPOS(){$('productGrid').innerHTML=db.products.map(p=>'<button class="tile" data-product="'+esc(p.id)+'"><strong>'+esc(p.name)+'</strong><span>'+money(p.price)+'</span>'+(cart[p.id]?'<b class="positive" style="margin-top:7px">ในบิล '+cart[p.id]+' ชิ้น</b>':'')+'</button>').join('');$('productGrid').querySelectorAll('[data-product]').forEach(b=>b.onclick=()=>{const p=db.products.find(x=>x.id===b.dataset.product);if(p){cart[p.id]=(cart[p.id]||0)+1;renderPOS();toast('เพิ่ม '+p.name+' อีก 1 ชิ้น')}});renderCart()}
+function addToCart(productId){const p=db.products.find(x=>x.id===productId);if(!p)return;cart[p.id]=(cart[p.id]||0)+1;renderPOS();toast('เพิ่ม '+p.name+' อีก 1 ชิ้น')}
+document.querySelectorAll('[data-special]').forEach(b=>b.onclick=()=>addToCart(b.dataset.special));
+function renderPOS(){$('productGrid').innerHTML=db.products.filter(p=>!SPECIAL_PRODUCTS.some(sp=>sp.id===p.id)).map(p=>'<button class="tile" data-product="'+esc(p.id)+'"><strong>'+esc(p.name)+'</strong><span>'+money(p.price)+'</span>'+(cart[p.id]?'<b class="positive" style="margin-top:7px">ในบิล '+cart[p.id]+' ชิ้น</b>':'')+'</button>').join('');$('productGrid').querySelectorAll('[data-product]').forEach(b=>b.onclick=()=>addToCart(b.dataset.product));renderCart()}
 function renderCart(){const entries=Object.entries(cart).filter(([,q])=>q>0);$('cartList').innerHTML=entries.length?entries.map(([id,q])=>{const p=db.products.find(x=>x.id===id);return p?'<div class="cartline"><div style="min-width:0;flex:1"><strong>'+esc(p.name)+'</strong><div class="muted small">'+money(p.price)+' / ชิ้น</div></div><div class="step"><button data-minus="'+id+'">−</button><b>'+q+'</b><button data-plus="'+id+'">+</button></div><strong>'+money(p.price*q)+'</strong></div>':''}).join(''):'<div class="empty">ยังไม่ได้เลือกสินค้า</div>';let total=entries.reduce((s,[id,q])=>s+(db.products.find(p=>p.id===id)?.price||0)*q,0);$('cartTotal').textContent=money(total);$('cartList').querySelectorAll('[data-minus]').forEach(b=>b.onclick=()=>{cart[b.dataset.minus]--;if(cart[b.dataset.minus]<=0)delete cart[b.dataset.minus];renderCart()});$('cartList').querySelectorAll('[data-plus]').forEach(b=>b.onclick=()=>{cart[b.dataset.plus]++;renderCart()})}
 $('clearCart').onclick=()=>{cart={};renderCart()};
 $('checkout').onclick=()=>{const items=Object.entries(cart).map(([id,qty])=>{const p=db.products.find(x=>x.id===id);return p?{name:p.name,price:Number(p.price),qty}:null}).filter(Boolean);if(!items.length){toast('เลือกสินค้าในบิลก่อน');return}const total=items.reduce((s,x)=>s+x.price*x.qty,0);db.sales.unshift({id:uid(),date:today(),time:timeNow(),items,total});cart={};save();render();toast('บันทึกยอดขาย '+money(total)+' แล้ว')};
