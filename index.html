@@ -176,7 +176,7 @@ $('undoBtn').onclick=()=>{if(selectedDay!==today())return;const d=dayData(today(
 $('resetBtn').onclick=()=>ask('รีเซ็ตยอดวันนี้','ต้องการล้างยอดและประวัติการนับของวันนี้ใช่หรือไม่?',()=>{db.days[today()]={count:0,logs:[]};selectedDay=today();save();render();toast('รีเซ็ตยอดวันนี้แล้ว')});
 function addToCart(productId){const p=db.products.find(x=>x.id===productId);if(!p)return;cart[p.id]=(cart[p.id]||0)+1;renderPOS();toast('เพิ่ม '+p.name+' อีก 1 ชิ้น')}
 document.querySelectorAll('[data-special]').forEach(b=>b.onclick=()=>addToCart(b.dataset.special));
-function productDisplayName(name){return String(name).replace(/^อุปกรณ์ตกแต่ง\\s*-\\s*/,'')}
+function productDisplayName(name){return String(name).replace(/^อุปกรณ์ตกแต่ง\s*-\s*/,'')}
 function productArtwork(name){
  const n=String(name);
  let art='<path d="M19 18h26v28H19z" fill="#E9D9C6" stroke="#A98C70" stroke-width="2.5"/><path d="M23 22h18v20H23z" fill="#FFF9EF" stroke="#C6AE91" stroke-width="2"/><path d="M27 37q6-10 11 0" fill="none" stroke="#D5A9B4" stroke-width="2.5" stroke-linecap="round"/>';
