@@ -60,6 +60,10 @@ body{font-family:'Nunito','Prompt',system-ui,sans-serif;letter-spacing:.05px}
 .toast{border-radius:999px;background:#151515;color:#F8F3E6;padding:12px 20px}
 .modalbox{border:0;border-radius:26px}.oldnotice{background:#F5B8D8;color:#151515;border-radius:16px}
 .empty{font-size:13px}
+.panel:after,.panel:nth-of-type(2):after,.panel:nth-of-type(3):after,.panel:nth-of-type(4):after,.tile:after{display:none!important;content:none!important}
+.iconbtn{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;padding:0;background:var(--pink);color:#151515}
+.iconbtn svg{width:23px;height:23px;display:block;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+:root.dark .iconbtn{background:#3B3731;color:#F5D98A}
 :root.dark .hero{background:#3B3731}
 :root.dark .panel{background:#302D29}
 :root.dark .input{background:#24211E}
@@ -205,7 +209,7 @@ $('csvBtn').onclick=async()=>{const text=csvText();try{if(navigator.clipboard&&w
 $('jsonBtn').onclick=()=>{const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='POSE-backup-'+today()+'.json';a.click();URL.revokeObjectURL(url)};
 $('jsonFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const x=JSON.parse(await f.text());if(!x||!x.days||!Array.isArray(x.products))throw Error();db={...db,...x};SPECIAL_PRODUCTS.forEach(sp=>{if(!db.products.some(p=>p.id===sp.id))db.products.push({...sp})});save();render();toast('นำเข้าข้อมูลสำเร็จ')}catch(err){toast('ไฟล์ไม่ถูกต้อง')}e.target.value=''};
 $('clearAll').onclick=()=>ask('ลบข้อมูลทั้งหมด','ข้อมูลลูกค้า ประวัติการขาย และสินค้าในเครื่องนี้จะถูกลบทั้งหมด ต้องการดำเนินการหรือไม่?',()=>{db={days:{},products:[...PRESETS.map(([name,price])=>({id:uid(),name,price})),...SPECIAL_PRODUCTS.map(sp=>({...sp}))],sales:[],goal:0,theme:db.theme};cart={};selectedDay=today();save();render();toast('ลบข้อมูลทั้งหมดแล้ว')});
-function applyTheme(){const pref=window.matchMedia('(prefers-color-scheme: dark)').matches;const dark=db.theme==='dark'||(db.theme==='auto'&&pref);document.documentElement.classList.toggle('dark',dark);$('themeBtn').textContent=dark?'☀':'◐'}
+function applyTheme(){const pref=window.matchMedia('(prefers-color-scheme: dark)').matches;const dark=db.theme==='dark'||(db.theme==='auto'&&pref);document.documentElement.classList.toggle('dark',dark);const sun='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>';const moon='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 15.5A8.5 8.5 0 0 1 8.5 3.5 8.5 8.5 0 1 0 20.5 15.5Z"/></svg>';$('themeBtn').innerHTML=dark?sun:moon;$('themeBtn').setAttribute('aria-label',dark?'เปลี่ยนเป็นโหมดกลางวัน':'เปลี่ยนเป็นโหมดกลางคืน');$('themeBtn').setAttribute('title',dark?'โหมดกลางวัน':'โหมดกลางคืน')}
 $('themeBtn').onclick=()=>{db.theme=db.theme==='auto'?'dark':db.theme==='dark'?'light':'auto';save();applyTheme();toast(db.theme==='auto'?'ใช้ธีมตามอุปกรณ์':db.theme==='dark'?'เปิดโหมดมืด':'เปิดโหมดสว่าง')};
 try{window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{if(db.theme==='auto')applyTheme()})}catch(e){}
 let observedDate=today();setInterval(()=>{const now=today();if(now!==observedDate){const wasFollowingToday=selectedDay===observedDate;observedDate=now;if(wasFollowingToday)selectedDay=now;render();toast('เปลี่ยนเป็นวันใหม่แล้ว')}},15000);document.addEventListener('visibilitychange',()=>{if(!document.hidden){const now=today();if(now!==observedDate){const wasFollowingToday=selectedDay===observedDate;observedDate=now;if(wasFollowingToday)selectedDay=now}render()}});
