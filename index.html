@@ -39,8 +39,10 @@ body{font-family:'Nunito','Prompt',system-ui,sans-serif;letter-spacing:.05px}
 .history-item{border-bottom:1px solid #15151512}.delta.positive{color:#657A32}.delta.negative{color:#C45D8F}
 .bar{background:#B5C6EC}.peak{background:#F5B8D8;color:#151515;border-radius:16px}
 .productgrid{gap:11px}
-.tile{border:0;min-height:112px;padding:15px 16px;background:#F5B8D8;color:#151515;position:relative;overflow:hidden;border-radius:22px;text-align:left}
-.tile:nth-child(4n+2){background:#F2D14E}.tile:nth-child(4n+3){background:#B5C6EC}.tile:nth-child(4n+4){background:#9DB05C}
+.tile{border:1px solid #E9E1D5;min-height:112px;padding:16px;background:#F6E9E8;color:#554B45;position:relative;overflow:hidden;border-radius:22px;text-align:left;box-shadow:0 3px 12px #8B796510}
+.tile:nth-child(4n+2){background:#F3EBDD}.tile:nth-child(4n+3){background:#E9EEF4}.tile:nth-child(4n+4){background:#EDF0E5}
+.tile span{color:#82766D}.tile:after{width:24px;height:24px;border:1.5px solid #A99B8E;border-radius:8px;opacity:.22;transform:rotate(18deg)}
+#productGrid .tile strong{padding-right:18px}
 .tile strong{font-size:14px;font-weight:900;line-height:1.4}.tile span{color:#39352F;font-weight:700;font-size:13px}
 .tile:after{content:"";position:absolute;right:14px;top:13px;width:17px;height:17px;border:2px solid currentColor;border-radius:5px;opacity:.16;transform:rotate(24deg)}
 .tile:active{transform:scale(.97)}
@@ -57,7 +59,7 @@ body{font-family:'Nunito','Prompt',system-ui,sans-serif;letter-spacing:.05px}
 :root.dark .datebar button,:root.dark .step button{background:#151515;color:#F8F3E6}
 :root.dark .peak{background:#F5B8D8;color:#151515}
 :root.dark .progress{background:#454038}
-:root.dark .tile,:root.dark .tile:nth-child(4n+2),:root.dark .tile:nth-child(4n+3),:root.dark .tile:nth-child(4n+4){color:#151515}
+:root.dark .tile,:root.dark .tile:nth-child(4n+2),:root.dark .tile:nth-child(4n+3),:root.dark .tile:nth-child(4n+4){color:#554B45;border-color:#514A40}:root.dark .tile span{color:#766B63}
 @media(min-width:600px){.app{padding-left:20px;padding-right:20px}.panel{padding:23px}}
 
 
@@ -77,7 +79,7 @@ body{font-family:'Nunito','Prompt',system-ui,sans-serif;letter-spacing:.05px}
 .square-shape{border-radius:5px}
 .kittybtn{width:100%;min-height:66px;margin-top:10px;padding:10px 14px;border:0;border-radius:18px;background:#EDE4D9;color:#51463D;display:flex;align-items:center;gap:12px;text-align:left;font:inherit;cursor:pointer}
 .kittybtn>span:nth-child(2){display:flex;flex-direction:column;gap:2px;flex:1}
-.kittybtn strong{font-size:14px}.kitty-mark{width:38px;height:38px;border-radius:13px;background:#F5DCE5;display:grid;place-items:center;font-weight:900;font-size:16px;color:#9C6B7E}
+.kittybtn strong{font-size:14px}.kitty-mark{width:42px;height:42px;flex:0 0 42px;border-radius:15px;background:#F5DCE5;display:grid;place-items:center;color:#9C6B7E}.kitty-mark svg{width:34px;height:34px;display:block}
 .addmark{width:30px;height:30px;border-radius:50%;background:#D9E1CE;display:grid;place-items:center;font-size:20px}
 .variantbtn:active,.kittybtn:active{transform:scale(.98)}
 :root.dark .variant-group{background:#3B3731}
@@ -110,8 +112,8 @@ body{font-family:'Nunito','Prompt',system-ui,sans-serif;letter-spacing:.05px}
 <div class="panel"><div class="goalrow"><h2 class="sectiontitle" style="margin:0">ประวัติการนับวันนี้</h2><span class="muted small" id="logCount">0 รายการ</span></div><div id="todayLogs"></div></div>
 </section>
 <section id="page-pos" class="hide">
-<div class="panel"><h2 class="sectiontitle">สินค้าเพิ่มเติม</h2><p class="muted small">เลือกแบบพวงกุญแจที่ต้องการ หรือเลือกคิตตี้เพื่อเพิ่มลงบิล</p><div class="variant-group"><div class="variant-heading">พวงกุญแจ <strong>70 บาท / ชิ้น</strong></div><div class="variant-grid"><button class="variantbtn" data-special="keychain-circle"><span class="shape circle-shape"></span><strong>วงกลม</strong><small>70 บาท</small></button><button class="variantbtn" data-special="keychain-oval"><span class="shape oval-shape"></span><strong>วงรี</strong><small>70 บาท</small></button><button class="variantbtn" data-special="keychain-square"><span class="shape square-shape"></span><strong>สี่เหลี่ยมจัตุรัส</strong><small>70 บาท</small></button></div><button class="kittybtn" data-special="kitty"><span class="kitty-mark">K</span><span><strong>คิตตี้</strong><small>50 บาท / ชิ้น</small></span><span class="addmark">+</span></button></div></div>
-<div class="panel"><h2 class="sectiontitle">สินค้าในร้าน</h2><p class="muted small">เลือกสินค้าเพื่อเพิ่มลงบิล ระบบคำนวณราคาให้อัตโนมัติ</p><div class="productgrid" id="productGrid"></div></div>
+<div class="panel"><h2 class="sectiontitle">กรอบรูป DIY</h2><p class="muted small">เลือกสินค้าเพื่อเพิ่มลงบิล ระบบคำนวณราคาให้อัตโนมัติ</p><div class="productgrid" id="productGrid"></div></div>
+<div class="panel"><h2 class="sectiontitle">พวงกุญแจ</h2><p class="muted small">เลือกแบบพวงกุญแจที่ต้องการเพื่อเพิ่มลงบิล</p><div class="variant-group"><div class="variant-heading">พวงกุญแจ <strong>70 บาท / ชิ้น</strong></div><div class="variant-grid"><button class="variantbtn" data-special="keychain-circle"><span class="shape circle-shape"></span><strong>วงกลม</strong><small>70 บาท</small></button><button class="variantbtn" data-special="keychain-oval"><span class="shape oval-shape"></span><strong>วงรี</strong><small>70 บาท</small></button><button class="variantbtn" data-special="keychain-square"><span class="shape square-shape"></span><strong>สี่เหลี่ยมจัตุรัส</strong><small>70 บาท</small></button></div><button class="kittybtn" data-special="kitty"><span class="kitty-mark" aria-label="รูปแมวน่ารัก"><svg viewBox="0 0 64 64" role="img" aria-hidden="true"><path d="M12 25 9 8l17 9a25 25 0 0 1 12 0l17-9-3 17a23 23 0 1 1-40 0Z" fill="#E7B8C7" stroke="#9C6B7E" stroke-width="2.5" stroke-linejoin="round"/><path d="M21 33c2-2 5-2 7 0m8 0c2-2 5-2 7 0" fill="none" stroke="#654B50" stroke-width="2.5" stroke-linecap="round"/><path d="M30 40q2 3 4 0" fill="none" stroke="#9C6B7E" stroke-width="2" stroke-linecap="round"/><path d="M32 37 30 39h4Z" fill="#B9798E"/><path d="M18 39 8 37m10 6L8 45m38-6 10-2m-10 8 10 2" stroke="#9C6B7E" stroke-width="1.8" stroke-linecap="round"/></svg></span><span><strong>คิตตี้</strong><small>50 บาท / ชิ้น</small></span><span class="addmark">+</span></button></div>
 <div class="panel"><div class="goalrow"><h2 class="sectiontitle" style="margin:0">รายการในบิล</h2><button class="btn soft small" id="clearCart">ล้างบิล</button></div><div id="cartList"><div class="empty">ยังไม่ได้เลือกสินค้า</div></div><div class="goalrow" style="margin-top:13px"><strong>ยอดรวม</strong><div class="totalprice" id="cartTotal">฿0.00</div></div><button class="btn" style="width:100%;margin-top:12px" id="checkout">บันทึกการขาย</button></div>
 <div class="panel"><h2 class="sectiontitle">เพิ่มสินค้าใหม่</h2><div class="row"><input class="input" id="newProductName" placeholder="ชื่อสินค้า"><input class="input" id="newProductPrice" type="number" min="0" step=".01" placeholder="ราคา"></div><button class="btn soft" style="width:100%;margin-top:9px" id="addProduct">เพิ่มสินค้าเข้าร้าน</button></div>
 </section>
