@@ -46,6 +46,15 @@ body{font-family:'Nunito','Prompt',system-ui,sans-serif;letter-spacing:.05px}
 .tile strong{font-size:14px;font-weight:900;line-height:1.4}.tile span{color:#39352F;font-weight:700;font-size:13px}
 .tile:after{content:"";position:absolute;right:14px;top:13px;width:17px;height:17px;border:2px solid currentColor;border-radius:5px;opacity:.16;transform:rotate(24deg)}
 .tile:active{transform:scale(.97)}
+#productGrid .tile{min-height:158px;align-items:flex-start;justify-content:flex-start;gap:7px;padding:12px 13px;background:#FBF4EE;border-color:#EFE3D8}
+#productGrid .tile:nth-child(4n+2){background:#F8F2E7}
+#productGrid .tile:nth-child(4n+3){background:#F0F4F5}
+#productGrid .tile:nth-child(4n+4){background:#F1F3EA}
+.tile-artwrap{width:100%;height:68px;margin:0 0 2px;display:flex;align-items:center;justify-content:center;border-radius:15px;background:#FFFFFF80}
+.product-art{width:66px;height:66px;display:block;filter:drop-shadow(0 2px 2px #806B5515)}
+#productGrid .tile strong{font-size:13px;line-height:1.35;padding:0;color:#66564B}
+#productGrid .tile .tile-price{font-size:12px;margin:0;color:#9A8172;font-weight:800}
+#productGrid .tile:after{display:none}
 .cartline{border-bottom:1px solid #15151512}.step{gap:7px}.step button{background:#151515;color:#F8F3E6}
 .totalprice{font-size:27px}
 .toast{border-radius:999px;background:#151515;color:#F8F3E6;padding:12px 20px}
@@ -167,7 +176,21 @@ $('undoBtn').onclick=()=>{if(selectedDay!==today())return;const d=dayData(today(
 $('resetBtn').onclick=()=>ask('รีเซ็ตยอดวันนี้','ต้องการล้างยอดและประวัติการนับของวันนี้ใช่หรือไม่?',()=>{db.days[today()]={count:0,logs:[]};selectedDay=today();save();render();toast('รีเซ็ตยอดวันนี้แล้ว')});
 function addToCart(productId){const p=db.products.find(x=>x.id===productId);if(!p)return;cart[p.id]=(cart[p.id]||0)+1;renderPOS();toast('เพิ่ม '+p.name+' อีก 1 ชิ้น')}
 document.querySelectorAll('[data-special]').forEach(b=>b.onclick=()=>addToCart(b.dataset.special));
-function renderPOS(){$('productGrid').innerHTML=db.products.filter(p=>!SPECIAL_PRODUCTS.some(sp=>sp.id===p.id)).map(p=>'<button class="tile" data-product="'+esc(p.id)+'"><strong>'+esc(p.name)+'</strong><span>'+money(p.price)+'</span>'+(cart[p.id]?'<b class="positive" style="margin-top:7px">ในบิล '+cart[p.id]+' ชิ้น</b>':'')+'</button>').join('');$('productGrid').querySelectorAll('[data-product]').forEach(b=>b.onclick=()=>addToCart(b.dataset.product));renderCart()}
+function productDisplayName(name){return String(name).replace(/^อุปกรณ์ตกแต่ง\\s*-\\s*/,'')}
+function productArtwork(name){
+ const n=String(name);
+ let art='<path d="M19 18h26v28H19z" fill="#E9D9C6" stroke="#A98C70" stroke-width="2.5"/><path d="M23 22h18v20H23z" fill="#FFF9EF" stroke="#C6AE91" stroke-width="2"/><path d="M27 37q6-10 11 0" fill="none" stroke="#D5A9B4" stroke-width="2.5" stroke-linecap="round"/>';
+ if(n.includes('ผ้า')) art='<path d="m16 22 10-7 12 5 11-2 3 27-12 4-12-4-10 2z" fill="#E8C9CF" stroke="#B88E9A" stroke-width="2.5" stroke-linejoin="round"/><path d="m26 15 2 30m10-25 2 29" stroke="#FFF4F0" stroke-width="2" opacity=".9"/>';
+ else if(n.includes('ลูกไม้')) art='<path d="M13 24q5-9 10 0t10 0 10 0 10 0v22q-5 9-10 0t-10 0-10 0-10 0z" fill="#F4E4E8" stroke="#C69AA8" stroke-width="2"/><path d="M17 29h32M17 37h32" stroke="#D7B4BE" stroke-width="2" stroke-dasharray="2 4"/>';
+ else if(n.includes('ริบบิ้น')&&!n.includes('กุหลาบ')) art='<path d="M31 31C17 9 8 22 20 31L31 35 43 31C55 22 46 9 31 31Z" fill="#E8B8C5" stroke="#B77E91" stroke-width="2.5"/><path d="m30 34-9 17 12-8 10 8-7-18" fill="#D99EAF" stroke="#B77E91" stroke-width="2"/><circle cx="31" cy="31" r="5" fill="#F8E9DC" stroke="#B77E91" stroke-width="2"/>';
+ else if(n.includes('สติกเกอร์ดาว')) art='<path d="m31 12 5.5 13 14 1-10.5 9 3.5 14L31 42l-12.5 7 3.5-14-10.5-9 14-1z" fill="#F1D88F" stroke="#C6A45A" stroke-width="2.5"/><path d="m48 14 2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#E8B8C5"/>';
+ else if(n.includes('สติกเกอร์หัวใจ')) art='<path d="M31 49 13 32C0 18 20 8 31 23 42 8 62 18 49 32Z" fill="#E9AFC0" stroke="#BE8296" stroke-width="2.5"/><path d="M18 23q4-6 9-2" fill="none" stroke="#FFF5F1" stroke-width="3" stroke-linecap="round"/>';
+ else if(n.includes('สติกเกอร์เพชร')) art='<path d="m31 10 20 15-20 29-20-29z" fill="#D7E5E8" stroke="#8BAEB5" stroke-width="2.5"/><path d="m11 25 40 0M22 25l9 29 9-29M22 25l9-15 9 15" fill="none" stroke="#A5C3C8" stroke-width="2"/>';
+ else if(n.includes('กุหลาบ')) art='<path d="M31 34q-16-7-8-18 8-8 13 2 8-10 15-1 5 12-15 19z" fill="#D88FA2" stroke="#A9697D" stroke-width="2.5"/><path d="M32 35q-8 12-2 20m3-10q9-8 15-3-5 10-15 8" fill="#A9B98E" stroke="#7F966E" stroke-width="2"/>';
+ else if(n.includes('เดซี่')) art='<g fill="#FFF9EF" stroke="#D8C6A8" stroke-width="1.5"><ellipse cx="31" cy="17" rx="6" ry="12"/><ellipse cx="31" cy="45" rx="6" ry="12"/><ellipse cx="17" cy="31" rx="12" ry="6"/><ellipse cx="45" cy="31" rx="12" ry="6"/><ellipse cx="21" cy="21" rx="6" ry="11" transform="rotate(-45 21 21)"/><ellipse cx="41" cy="21" rx="6" ry="11" transform="rotate(45 41 21)"/><ellipse cx="21" cy="41" rx="6" ry="11" transform="rotate(45 21 41)"/><ellipse cx="41" cy="41" rx="6" ry="11" transform="rotate(-45 41 41)"/></g><circle cx="31" cy="31" r="8" fill="#EBCB79" stroke="#C49D4F" stroke-width="2"/>';
+ return '<svg viewBox="0 0 64 64" aria-hidden="true" class="product-art">'+art+'</svg>';
+}
+function renderPOS(){$('productGrid').innerHTML=db.products.filter(p=>!SPECIAL_PRODUCTS.some(sp=>sp.id===p.id)).map(p=>'<button class="tile" data-product="'+esc(p.id)+'"><span class="tile-artwrap">'+productArtwork(p.name)+'</span><strong>'+esc(productDisplayName(p.name))+'</strong><span class="tile-price">'+money(p.price)+'</span>'+(cart[p.id]?'<b class="positive" style="margin-top:7px">ในบิล '+cart[p.id]+' ชิ้น</b>':'')+'</button>').join('');$('productGrid').querySelectorAll('[data-product]').forEach(b=>b.onclick=()=>addToCart(b.dataset.product));renderCart()}
 function renderCart(){const entries=Object.entries(cart).filter(([,q])=>q>0);$('cartList').innerHTML=entries.length?entries.map(([id,q])=>{const p=db.products.find(x=>x.id===id);return p?'<div class="cartline"><div style="min-width:0;flex:1"><strong>'+esc(p.name)+'</strong><div class="muted small">'+money(p.price)+' / ชิ้น</div></div><div class="step"><button data-minus="'+id+'">−</button><b>'+q+'</b><button data-plus="'+id+'">+</button></div><strong>'+money(p.price*q)+'</strong></div>':''}).join(''):'<div class="empty">ยังไม่ได้เลือกสินค้า</div>';let total=entries.reduce((s,[id,q])=>s+(db.products.find(p=>p.id===id)?.price||0)*q,0);$('cartTotal').textContent=money(total);$('cartList').querySelectorAll('[data-minus]').forEach(b=>b.onclick=()=>{cart[b.dataset.minus]--;if(cart[b.dataset.minus]<=0)delete cart[b.dataset.minus];renderCart()});$('cartList').querySelectorAll('[data-plus]').forEach(b=>b.onclick=()=>{cart[b.dataset.plus]++;renderCart()})}
 $('clearCart').onclick=()=>{cart={};renderCart()};
 $('checkout').onclick=()=>{const items=Object.entries(cart).map(([id,qty])=>{const p=db.products.find(x=>x.id===id);return p?{name:p.name,price:Number(p.price),qty}:null}).filter(Boolean);if(!items.length){toast('เลือกสินค้าในบิลก่อน');return}const total=items.reduce((s,x)=>s+x.price*x.qty,0);db.sales.unshift({id:uid(),date:today(),time:timeNow(),items,total});cart={};save();render();toast('บันทึกยอดขาย '+money(total)+' แล้ว')};
