@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+<rect width="256" height="256" rx="58" fill="#F8F3E9"/>
+<circle cx="128" cy="128" r="111" fill="#F3E4D2" stroke="#D6BDA4" stroke-width="5" stroke-dasharray="9 9"/>
+<path d="M49 94q0-12 12-12h35l13-18h40l13 18h33q12 0 12 12v78q0 12-12 12H61q-12 0-12-12Z" fill="#E8D1BA" stroke="#684B38" stroke-width="7" stroke-linejoin="round"/>
+<rect x="67" y="97" width="31" height="23" rx="7" fill="#FFF9F0" stroke="#8B6A50" stroke-width="4"/>
+<circle cx="137" cy="132" r="43" fill="#FFF8EF" stroke="#684B38" stroke-width="8"/>
+<circle cx="137" cy="132" r="29" fill="#8A6044"/>
+<circle cx="147" cy="120" r="8" fill="#FFF8EF"/>
+<path d="M111 178q2-19 19-19h14q17 0 19 19" fill="#D8B99B" stroke="#684B38" stroke-width="4"/>
+<path d="M174 93h16" stroke="#684B38" stroke-width="6" stroke-linecap="round"/>
+<path d="M78 76 75 48l25 14q18-9 36 0l25-14-3 28" fill="#FFF8EF" stroke="#8A6044" stroke-width="5" stroke-linejoin="round"/>
+<path d="M87 73q8-11 17 0m22 0q8-11 17 0" fill="none" stroke="#684B38" stroke-width="4" stroke-linecap="round"/>
+<path d="M111 83q8 7 16 0" fill="none" stroke="#A87572" stroke-width="4" stroke-linecap="round"/>
+<path d="M186 42l5 12 12 5-12 5-5 12-5-12-12-5 12-5Z" fill="#B98B60"/>
+<path d="M57 185l4 9 9 4-9 4-4 9-4-9-9-4 9-4Z" fill="#B98B60"/>
+<rect x="47" y="202" width="162" height="38" rx="19" fill="#684B38"/>
+<text x="128" y="229" text-anchor="middle" font-family="Arial,sans-serif" font-size="27" font-weight="900" letter-spacing="4" fill="#FFF8EF">POSE</text>
+<path d="M119 241q9-13 18 0l-9 8Z" fill="#B98B60"/>
+</svg>
