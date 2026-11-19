@@ -236,9 +236,9 @@ $('saveWorkday').onclick=()=>{
  if(end<=start){toast('เวลาเลิกงานต้องอยู่หลังเวลาเริ่มงาน');return}
  const duplicate=db.workdays.find(w=>w.date===date&&w.start===start&&w.id!==editingWorkId);
  if(duplicate){toast('มีเวลาทำงานช่วงนี้ในวันดังกล่าวแล้ว');return}
- if(editingWorkId){const w=db.workdays.find(x=>x.id===editingWorkId);if(w)Object.assign(w,{date,start,end,note})}
+ const wasEditing=Boolean(editingWorkId);if(editingWorkId){const w=db.workdays.find(x=>x.id===editingWorkId);if(w)Object.assign(w,{date,start,end,note})}
  else db.workdays.push({id:uid(),date,start,end,note});
- selectedWorkDate=date;const d=dateObj(date);scheduleMonth=new Date(d.getFullYear(),d.getMonth(),1);save();resetWorkForm();renderWorkCalendar();toast(editingWorkId?'แก้ไขตารางแล้ว':'เพิ่มวันทำงานแล้ว');
+ selectedWorkDate=date;const d=dateObj(date);scheduleMonth=new Date(d.getFullYear(),d.getMonth(),1);save();resetWorkForm();renderWorkCalendar();toast(wasEditing?'แก้ไขตารางแล้ว':'เพิ่มวันทำงานแล้ว');
 };
 $('cancelWorkEdit').onclick=resetWorkForm;
 $('prevDay').onclick=()=>moveDay(-1);$('nextDay').onclick=()=>moveDay(1);
